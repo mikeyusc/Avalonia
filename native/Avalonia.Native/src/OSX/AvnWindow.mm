@@ -298,8 +298,11 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
             [self invalidateShadow];
-            if (self->_parent != nullptr)
+            if (self->_parent != nullptr) {
                 self->_parent->BringToFront();
+                self->_parent->UpdateCursor();
+            }
+                
         }
         @finally{
         }
